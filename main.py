@@ -1,4 +1,5 @@
 import tkinter
+from tkinter import ttk
 from fonctions import style_acceuil
 
 window = tkinter.Tk()
@@ -7,7 +8,9 @@ window.minsize(720, 480)
 window.title("CLINIQUE POPO")
 window["bg"] = "#4E9F3D"
 
+
 def window1():
+    
     root = tkinter.Tk()
     root.geometry("720x480")
     root.minsize(720, 480)
@@ -43,12 +46,14 @@ def window1():
     enter_email = tkinter.Entry(container_forms, textvariable=email).grid(row=3, column=1, **style_acceuil.style_enter)
 
     # champ 5
-    category = tkinter.StringVar()
-    Label_category = tkinter.Label(container_forms, text="Catégorie: ", **style_acceuil.color_label).grid(row=4, column=0, **style_acceuil.margin_label)
-    enter_category = tkinter.Entry(container_forms, textvariable=category).grid(row=4, column=1, **style_acceuil.style_enter)
+    label_category = tkinter.Label(container_forms, text="Category: ", **style_acceuil.color_label).grid(row=4, column=0, **style_acceuil.margin_label)
+    choose_category = ["Généraliste", "Dermatologue", "Dentiste"]
+    liste_category = ttk.Combobox(container_forms, values=choose_category, width=17)
+    liste_category.current(0)
+    liste_category.grid(row=4, column=1, **style_acceuil.style_enter) 
     
     # Bouton valider
-    bnt_validate = tkinter.Button(container_forms, text="Valider", **style_acceuil.bnt_valided).grid(row=5, column=0, sticky="W")
+    bnt_validate = tkinter.Button(container_forms, text="Valider", command=voir, **style_acceuil.bnt_valided).grid(row=5, column=0, sticky="W")
     container_forms.pack()
     
     root.mainloop()
