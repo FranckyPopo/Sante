@@ -30,5 +30,10 @@ bnt_valided = {
 }
 
 style_enter = {
-    "sticky": "E"
+    "sticky": "W"
+}
+
+style_calendar = {
+    "sticky": "W",
+    "pady": 2
 }
