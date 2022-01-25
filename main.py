@@ -1,13 +1,19 @@
+import os
 import tkinter
 from tkinter import ttk
-from fonctions import style_acceuil
+from unicodedata import category
+from fonctions import style_acceuil, data
 
 window = tkinter.Tk()
 window.geometry("720x480")
 window.minsize(720, 480)
 window.title("CLINIQUE POPO")
 window["bg"] = "#4E9F3D"
+
+folder_current = os.getcwd()
+folder_data = os.path.join(folder_current, "data")
     
+recovery_appointment = data.get_data(folder_data, "list_appointment")
 
 def window1():
     
@@ -16,17 +22,18 @@ def window1():
         firs_name = enter_firsname.get()
         email = enter_email.get()
         telephone_number = enter_telephone_number.get()
+        category = list_category.get()
         
         if last_name and firs_name and email and telephone_number:
             instance_appoitment = {
                 "last_name": last_name,
                 "firs_name": firs_name,
                 "email": email,
-                "telephone_number": telephone_number
+                "telephone_number": telephone_number,
+                "category": category
             }
-            
-            
-            
+            recovery_appointment.append(instance_appoitment)
+            data.recording_data(recovery_appointment, folder_current, "data", "list_appointment")
         else:
             print("NON")
     
@@ -69,9 +76,9 @@ def window1():
     # champ 5
     label_category = tkinter.Label(container_forms, text="Category: ", **style_acceuil.color_label).grid(row=4, column=0, **style_acceuil.margin_label)
     choose_category = ["Généraliste", "Dermatologue", "Dentiste"]
-    liste_category = ttk.Combobox(container_forms, values=choose_category, width=17)
-    liste_category.current(0)
-    liste_category.grid(row=4, column=1, **style_acceuil.style_enter) 
+    list_category = ttk.Combobox(container_forms, values=choose_category, width=17)
+    list_category.current(0)
+    list_category.grid(row=4, column=1, **style_acceuil.style_enter) 
     
     # Bouton valider
     bnt_validate = tkinter.Button(container_forms, command=afficher, text="Valider",  **style_acceuil.bnt_valided).grid(row=5, column=0, sticky="W")
