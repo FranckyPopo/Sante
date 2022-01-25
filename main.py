@@ -1,7 +1,8 @@
 import os
 import tkinter
 from tkinter import ttk
-from tkcalendar import Calendar
+from tkinter import messagebox
+from tkcalendar import DateEntry
 from fonctions import style_acceuil, data
 
 window = tkinter.Tk()
@@ -23,6 +24,7 @@ def window1():
         email = enter_email.get()
         telephone_number = enter_telephone_number.get()
         category = list_category.get()
+        date_appoitment = str(enter_date.get_date())
         
         label_erreur = tkinter.Label(container_forms, text="Veuillez remplir tous les champs", fg="#4E9F3D", bg="#4E9F3D")
         label_erreur.grid(row=13, column=0, sticky="W")
@@ -33,18 +35,19 @@ def window1():
                 "firs_name": firs_name,
                 "email": email,
                 "telephone_number": telephone_number,
-                "category": category
+                "category": category,
+                "date_appoitment": date_appoitment
             }
+            
             recovery_appointment.append(instance_appoitment)
             data.recording_data(recovery_appointment, folder_current, "data", "list_appointment")
+            
+            messagebox.showinfo("Rendez-vous pris avec succès", "Rendez-vous pris avec succès")
             
             enter_last_name.delete(0, "end")
             enter_firsname.delete(0, "end")
             enter_telephone_number.delete(0, "end")
             enter_email.delete(0, "end")
-            
-            
-            
             
             label_erreur["fg"] = "#4E9F3D"
         else:
@@ -88,14 +91,14 @@ def window1():
 
     # champ 5
     label_category = tkinter.Label(container_forms, text="Category: ", **style_acceuil.color_label).grid(row=9, column=0, **style_acceuil.margin_label)
-    choose_category = ["Généraliste", "Dermatologue", "Dentiste"]
+    choose_category = ["Generaliste", "Dermatologue", "Dentiste"]
     list_category = ttk.Combobox(container_forms, values=choose_category, width=17)
     list_category.current(0)
     list_category.grid(row=10, column=0, **style_acceuil.style_enter) 
     
     # champs 6
     label_date = tkinter.Label(container_forms, text="Date du rendez-vous: ", **style_acceuil.color_label).grid(row=11, column=0, **style_acceuil.margin_label)
-    enter_date = Calendar(container_forms)
+    enter_date = DateEntry(container_forms)
     enter_date.grid(row=12, column=0, **style_acceuil.style_calendar)
     
     # Bouton valider
