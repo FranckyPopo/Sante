@@ -1,6 +1,6 @@
 import os
 import tkinter
-from tkinter import ttk
+from tkinter import Label, ttk
 from unicodedata import category
 from fonctions import style_acceuil, data
 
@@ -24,6 +24,9 @@ def window1():
         telephone_number = enter_telephone_number.get()
         category = list_category.get()
         
+        label_erreur = tkinter.Label(container_forms, text="Veuillez remplir tous les champs", fg="#4E9F3D", bg="#4E9F3D")
+        label_erreur.grid(row=5, column=1)
+
         if last_name and firs_name and email and telephone_number:
             instance_appoitment = {
                 "last_name": last_name,
@@ -34,8 +37,15 @@ def window1():
             }
             recovery_appointment.append(instance_appoitment)
             data.recording_data(recovery_appointment, folder_current, "data", "list_appointment")
+            
+            enter_last_name.delete(0, "end")
+            enter_firsname.delete(0, "end")
+            enter_telephone_number.delete(0, "end")
+            enter_email.delete(0, "end")
+            
+            label_erreur["fg"] = "#4E9F3D"
         else:
-            print("NON")
+            label_erreur["fg"] = "red"
     
     root = tkinter.Tk()
     root.geometry("720x480")
@@ -81,7 +91,7 @@ def window1():
     list_category.grid(row=4, column=1, **style_acceuil.style_enter) 
     
     # Bouton valider
-    bnt_validate = tkinter.Button(container_forms, command=afficher, text="Valider",  **style_acceuil.bnt_valided).grid(row=5, column=0, sticky="W")
+    bnt_validate = tkinter.Button(container_forms, command=afficher, text="Valider",  **style_acceuil.bnt_valided).grid(row=6, column=0, sticky="W")
     
     container_forms.pack()
     
