@@ -3,7 +3,7 @@ import tkinter
 from tkinter import ttk, messagebox
 from tkcalendar import DateEntry
 from .data import recording_data, get_data
-from fonctions import style_window1, style_window2
+from fonctions import style_window1, style_window3
 
 
 folder_current = os.getcwd()
@@ -106,10 +106,11 @@ def window3():
     root = tkinter.Toplevel()
     root.geometry("720x480")
     root.resizable(width=False, height=False)
+    root["bg"] = "#4E9F3D"
     
     frame_title = tkinter.Frame(root)
     
-    label_title = tkinter.Label(frame_title, text="OU NOUS RETOUVER").grid(row=0)
+    label_title = tkinter.Label(frame_title, text="OU NOUS RETOUVER", **style_window3.style_title).grid(row=0)
     
     frame_title.pack(pady=25)
     
