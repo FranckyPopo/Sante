@@ -4,7 +4,7 @@ from fonctions import style_acceuil, fonctionnalite
 
 window = tkinter.Tk()
 window.geometry("720x480")
-window.minsize(720, 480)
+window.resizable(width=False, height=False)
 window.title("CLINIQUE POPO")
 window["bg"] = "#4E9F3D"
  

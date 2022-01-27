@@ -104,12 +104,12 @@ def window1():
     root.mainloop()
     
 def window3():
-    
-    
     root = tkinter.Toplevel()
     root.geometry("720x480")
-    #root.resizable(width=False, height=False)
+    root.resizable(width=False, height=False)
     root["bg"] = "#4E9F3D"
+    
+    sticky = "W"
     
     frame_title = tkinter.Frame(root)
     
@@ -119,7 +119,6 @@ def window3():
     
     frame_infos = tkinter.Frame(root, bg="#4E9F3D")
     
-    
     # block 1
     container1 = tkinter.Frame(frame_infos, bg="#4E9F3D")
     
@@ -127,10 +126,10 @@ def window3():
     label1.grid(row=0, column=0, sticky="WE")
     
     under_label1 = tkinter.Label(container1, text="25 32 00 05 04", **style_window3.style_under_label) 
-    under_label1.grid(row=1, column=0, sticky="W")
+    under_label1.grid(row=1, column=0, sticky=sticky)
     
     under_label2 = tkinter.Label(container1, text="Ouvert actuellement", **style_window3.style_under_label) 
-    under_label2.grid(row=2, column=0, sticky="W")
+    under_label2.grid(row=2, column=0, sticky=sticky)
     
     container1.grid(row=0, column=0, pady=10)
     
@@ -141,10 +140,10 @@ def window3():
     label2.grid(row=0, column=0, sticky="WE")
     
     under_label_1 = tkinter.Label(container2, text="25 05 04 00 32", **style_window3.style_under_label) 
-    under_label_1.grid(row=1, column=0, sticky="W")
+    under_label_1.grid(row=1, column=0, sticky=sticky)
     
     under_label2_2 = tkinter.Label(container2, text="Ouvert  24h / 24h", **style_window3.style_under_label) 
-    under_label2_2.grid(row=2, column=0, sticky="W")
+    under_label2_2.grid(row=2, column=0, sticky=sticky)
     
     container2.grid(row=1, column=0, pady=10)
     
@@ -155,15 +154,13 @@ def window3():
     label3.grid(row=0, column=0, sticky="WE")
     
     under_label_3_3 = tkinter.Label(container3, text="25 05 04 00 32", **style_window3.style_under_label) 
-    under_label_3_3.grid(row=1, column=0, sticky="W")
+    under_label_3_3.grid(row=1, column=0, sticky=sticky)
     
     under_label2_3 = tkinter.Label(container3, text="Ouvert  24h / 24h", **style_window3.style_under_label) 
-    under_label2_3.grid(row=2, column=0, sticky="W")
+    under_label2_3.grid(row=2, column=0, sticky=sticky)
     
     container3.grid(row=2, column=0)
     
-    
     frame_infos.pack()
-    
     
     root.mainloop()
