@@ -16,11 +16,7 @@ style_canet = {
     "font": ("Roboto", 14),
 }
 
-# marge extérieur des consultation
-pady = 5 
-
-# Cette variable permet de position les données des consultations
-sticky = "w"
-
-# Cette couleur est utilisé uniquement pour les widgets qui on besoin de couleur independente
+# C'est différente option vont être utilié pas des widgets qui on besoin d'option independente
 bg = "#4E9F3D"
+pady = 5 
+sticky = "w"

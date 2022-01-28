@@ -3,7 +3,7 @@ from tkinter import ttk
 import tkcalendar
 from fonctions.fonctionnalite import folder_data
 from fonctions.data import get_data, recording_data
-from fonctions.style_window1 import grand_titre
+from fonctions.style_window1 import grand_titre, bnt_valided
 from fonctions.style_fonctionnali_medecin import style_title, style_consultation_display, pady, sticky, style_canet, bg
 
 
@@ -54,12 +54,12 @@ def canet():
     root["bg"] = "#4E9F3D"
     
     label_title = tkinter.Label(root, text="CANET DE SANTE", **grand_titre)
-    label_title.pack(pady=30)
+    label_title.pack(pady=25)
     
-    frame_forms = tkinter.Frame(root, bg="#4E9F3D", bd=2, relief="solid")
+    frame_forms = tkinter.Frame(root, bg="#4E9F3D")
     
     # champs 1
-    container1 = tkinter.Frame(frame_forms, bg=bg, bd=2, relief="solid")
+    container1 = tkinter.Frame(frame_forms, bg=bg)
     label_doctor = tkinter.Label(container1, text="Medecin en charge de la consultation:", **style_canet)
     label_doctor.grid(row=0, sticky=sticky)
     
@@ -69,24 +69,28 @@ def canet():
     container1.grid(row=0, pady=10, sticky=sticky)
     
     # champ 2
-    container2 = tkinter.Frame(frame_forms, bg=bg, bd=2, relief="solid")
+    container2 = tkinter.Frame(frame_forms, bg=bg)
     label_date = tkinter.Label(container2, text="Date:", **style_canet)
     label_date.grid(row=3, column=0, sticky=sticky)
     
     
     enter_last_name_doctor = tkcalendar.DateEntry(container2)
     enter_last_name_doctor.grid(row=4, column=0, sticky=sticky)
-    container2.grid(row=1, pady=10)
+    container2.grid(row=1, pady=10, sticky=sticky)
     
     # champs 3
     container3 = tkinter.Frame(frame_forms, bg=bg)
     label_reason = tkinter.Label(container3, text="Motif:", **style_canet)
     label_reason.grid(row=5, column=0, sticky=sticky)
     
-    enter_reason = tkinter.Text(container3, width=10, height=10)
+    enter_reason = tkinter.Text(container3, width=38, height=5)
     enter_reason.grid(row=6, column=0, sticky=sticky)
-    container3.grid(row=2)
+    container3.grid(row=2, sticky=sticky)
     
+    # Bouton valider
+    bnt_validate = tkinter.Button(frame_forms, text="Valider", **bnt_valided)
+    bnt_validate.grid(row=3, sticky=sticky, pady=20)
+
     frame_forms.pack()
     
     root.mainloop()
