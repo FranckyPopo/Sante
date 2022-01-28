@@ -2,6 +2,7 @@ import os
 import tkinter
 from fonctions import style_acceuil, fonctionnalite
 
+
 window = tkinter.Tk()
 window.geometry("720x480")
 window.resizable(width=False, height=False)
