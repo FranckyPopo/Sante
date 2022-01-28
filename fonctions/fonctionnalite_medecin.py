@@ -1,8 +1,10 @@
 import tkinter
+from tkinter import ttk
+import tkcalendar
 from fonctions.fonctionnalite import folder_data
 from fonctions.data import get_data, recording_data
 from fonctions.style_window1 import grand_titre
-from fonctions.style_fonctionnali_medecin import style_title, style_consultation_display, pady, sticky
+from fonctions.style_fonctionnali_medecin import style_title, style_consultation_display, pady, sticky, style_canet, bg
 
 
 def consultation():
@@ -42,4 +44,49 @@ def consultation():
         
     frame_reservation.grid(row=1, column=0)
 
+    root.mainloop()
+    
+def canet():
+    root = tkinter.Toplevel()
+    root.title("Canet de santé")
+    root.resizable(width=False, height=False)
+    root.geometry("720x480")
+    root["bg"] = "#4E9F3D"
+    
+    label_title = tkinter.Label(root, text="CANET DE SANTE", **grand_titre)
+    label_title.pack(pady=30)
+    
+    frame_forms = tkinter.Frame(root, bg="#4E9F3D", bd=2, relief="solid")
+    
+    # champs 1
+    container1 = tkinter.Frame(frame_forms, bg=bg, bd=2, relief="solid")
+    label_doctor = tkinter.Label(container1, text="Medecin en charge de la consultation:", **style_canet)
+    label_doctor.grid(row=0, sticky=sticky)
+    
+    choose_doctor = ["Popo", "Afri", "Kreto",]
+    enter_last_name_doctor = ttk.Combobox(container1, values=choose_doctor)
+    enter_last_name_doctor.grid(row=2, column=0, sticky=sticky)
+    container1.pack(side="left")
+    
+    # champ 2
+    container2 = tkinter.Frame(frame_forms, bg=bg, bd=2, relief="solid")
+    label_date = tkinter.Label(container2, text="Date:", **style_canet)
+    label_date.grid(row=3, column=0, sticky=sticky)
+    
+    
+    enter_last_name_doctor = tkcalendar.DateEntry(container2)
+    enter_last_name_doctor.grid(row=4, column=0, sticky=sticky)
+    container2.pack(side="left")
+    
+    # champs 3
+    container3 = tkinter.Frame(frame_forms, bg=bg)
+    label_reason = tkinter.Label(container3, text="Motif:", **style_canet)
+    label_reason.grid(row=5, column=0, sticky=sticky)
+    
+    enter_reason = tkinter.Text(container3, width=10, height=10)
+    enter_reason.grid(row=6, column=0, sticky=sticky)
+    container3.pack(side="left")
+    
+    frame_forms.pack()
+    
     root.mainloop()
