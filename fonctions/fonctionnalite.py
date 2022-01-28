@@ -9,11 +9,11 @@ from fonctions import style_window1
 folder_current = os.getcwd()
 folder_data = os.path.join(folder_current, "data")
     
-recovery_appointment = get_data(folder_data, "list_appointment")
 
 def window1():
     
     def afficher():
+        recovery_appointment = get_data(folder_data, "list_appointment")
         last_name = enter_last_name.get()
         firs_name = enter_firsname.get()
         email = enter_email.get()
@@ -24,7 +24,7 @@ def window1():
         label_erreur = tkinter.Label(container_forms, text="Veuillez remplir tous les champs", fg=style_window1.bg, bg=style_window1.bg)
         label_erreur.grid(row=13, column=0, sticky="W")
 
-        if last_name and firs_name and email and telephone_number:
+        if last_name and firs_name and email and telephone_number and category:
             instance_appoitment = {
                 "last_name": last_name,
                 "firs_name": firs_name,
