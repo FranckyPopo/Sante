@@ -21,7 +21,7 @@ def window1():
         category = list_category.get()
         date_appoitment = str(enter_date.get_date())
         
-        label_erreur = tkinter.Label(container_forms, text="Veuillez remplir tous les champs", fg="#4E9F3D", bg="#4E9F3D")
+        label_erreur = tkinter.Label(container_forms, text="Veuillez remplir tous les champs", fg=style_window1.bg, bg=style_window1.bg)
         label_erreur.grid(row=13, column=0, sticky="W")
 
         if last_name and firs_name and email and telephone_number:
@@ -44,55 +44,80 @@ def window1():
             enter_telephone_number.delete(0, "end")
             enter_email.delete(0, "end")
             
-            label_erreur["fg"] = "#4E9F3D"
+            label_erreur["fg"] = style_window1.bg
         else:
             label_erreur["fg"] = "red"
     
     root = tkinter.Tk()
-    root.geometry("720x800")
+    root.geometry("720x600")
     root.resizable(width=False, height=False)
     root.title("Prendre rendez-vous")
-    root["bg"] = "#4E9F3D"
+    root["bg"] = style_window1.bg
     
-    container_title = tkinter.Frame(root, bg="#4E9F3D")
+    container_title = tkinter.Frame(root, bg=style_window1.bg)
     
-    titre = tkinter.Label(container_title, text="PRENDRE RENDEZ-VOUS", **style_window1.grand_titre).pack(pady=35, fill="x")
+    label_title = tkinter.Label(container_title, text="PRENDRE RENDEZ-VOUS", **style_window1.grand_titre)
+    label_title.pack(pady=25)
     
     container_title.pack()
     
-    container_forms = tkinter.Frame(root, bg="#4E9F3D")
+    container_forms = tkinter.Frame(root, bg=style_window1.bg)
 
     # champ 1
-    Label_last_name = tkinter.Label(container_forms, text="Nom: ", **style_window1.color_label).grid(row=0, column=0, **style_window1.margin_label)
-    enter_last_name = tkinter.Entry(container_forms)
-    enter_last_name.grid(row=2, column=0, **style_window1.style_enter)
+    container1 = tkinter.Frame(container_forms, bg=style_window1.bg)
+    Label_last_name = tkinter.Label(container1, text="Nom: ", **style_window1.color_label)
+    Label_last_name.grid(row=0, column=0, sticky=style_window1.sticky, pady=style_window1.pady)
+    
+    enter_last_name = tkinter.Entry(container1)
+    enter_last_name.grid(row=1, column=0, **style_window1.style_enter)
+    container1.grid(row=0, sticky=style_window1.sticky, pady=style_window1.pady)
     
     # champ 2
-    Label_firs_name = tkinter.Label(container_forms, text="Prénom: ", **style_window1.color_label).grid(row=3, column=0, **style_window1.margin_label)
-    enter_firsname = tkinter.Entry(container_forms)
-    enter_firsname.grid(row=4, column=0, **style_window1.style_enter)
+    container2 = tkinter.Frame(container_forms, bg=style_window1.bg)
+    Label_firs_name = tkinter.Label(container2, text="Prénom: ", **style_window1.color_label)
+    Label_firs_name.grid(row=0, column=0, sticky=style_window1.sticky, pady=style_window1.pady)
+    
+    enter_firsname = tkinter.Entry(container2)
+    enter_firsname.grid(row=1, column=0, **style_window1.style_enter)
+    container2.grid(row=1, sticky=style_window1.sticky, pady=style_window1.pady)
     
     # champ 3
-    Label_telephone_number = tkinter.Label(container_forms, text="Télephone: ", **style_window1.color_label).grid(row=5, column=0, **style_window1.margin_label)
-    enter_telephone_number = tkinter.Entry(container_forms)
-    enter_telephone_number.grid(row=6, column=0, **style_window1.style_enter)
+    container3 = tkinter.Frame(container_forms, bg=style_window1.bg)
+    Label_telephone_number = tkinter.Label(container3, text="Télephone: ", **style_window1.color_label)
+    Label_telephone_number.grid(row=0, column=0, sticky=style_window1.sticky, pady=style_window1.pady)
+    
+    enter_telephone_number = tkinter.Entry(container3)
+    enter_telephone_number.grid(row=1, column=0, **style_window1.style_enter)
+    container3.grid(row=2, sticky=style_window1.sticky, pady=style_window1.pady)
     
     # champ 4
-    Label_email = tkinter.Label(container_forms, text="Email: ", **style_window1.color_label).grid(row=7, column=0, **style_window1.margin_label)
-    enter_email = tkinter.Entry(container_forms) 
-    enter_email.grid(row=8, column=0, **style_window1.style_enter)
-
+    container4 = tkinter.Frame(container_forms, bg=style_window1.bg)
+    Label_email = tkinter.Label(container4, text="Email: ", **style_window1.color_label)
+    Label_email.grid(row=0, column=0, sticky=style_window1.sticky, pady=style_window1.pady)
+    
+    enter_email = tkinter.Entry(container4) 
+    enter_email.grid(row=2, column=0, **style_window1.style_enter)
+    container4.grid(row=3, sticky=style_window1.sticky, pady=style_window1.pady)
+    
     # champ 5
-    label_category = tkinter.Label(container_forms, text="Category: ", **style_window1.color_label).grid(row=9, column=0, **style_window1.margin_label)
+    container5 = tkinter.Frame(container_forms, bg=style_window1.bg)
+    label_category = tkinter.Label(container5, text="Category: ", **style_window1.color_label)
+    label_category.grid(row=0, column=0, sticky=style_window1.sticky, pady=style_window1.pady)
+     
     choose_category = ["Generaliste", "Dermatologue", "Dentiste"]
-    list_category = ttk.Combobox(container_forms, values=choose_category, width=17)
+    list_category = ttk.Combobox(container5, values=choose_category, width=17)
     list_category.current(0)
-    list_category.grid(row=10, column=0, **style_window1.style_enter) 
+    list_category.grid(row=1, column=0, **style_window1.style_enter) 
+    container5.grid(row=4, sticky=style_window1.sticky, pady=style_window1.pady)
     
     # champs 6
-    label_date = tkinter.Label(container_forms, text="Date du rendez-vous: ", **style_window1.color_label).grid(row=11, column=0, **style_window1.margin_label)
-    enter_date = DateEntry(container_forms)
-    enter_date.grid(row=12, column=0, **style_window1.style_calendar)
+    container6 = tkinter.Frame(container_forms, bg=style_window1.bg)
+    label_date = tkinter.Label(container6, text="Date du rendez-vous: ", **style_window1.color_label)
+    label_date.grid(row=0, column=0, sticky=style_window1.sticky, pady=style_window1.pady)
+    
+    enter_date = DateEntry(container6)
+    enter_date.grid(row=1, column=0, **style_window1.style_calendar)
+    container6.grid(row=5, sticky=style_window1.sticky, pady=style_window1.pady)
     
     # Bouton valider
     bnt_validate = tkinter.Button(container_forms, command=afficher, text="Valider",  **style_window1.bnt_valided).grid(row=14, column=0, sticky="W", pady=20)

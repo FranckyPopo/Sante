@@ -11,11 +11,6 @@ color_label = {
     "font": ("Roboto", 14, "bold")
 }
 
-margin_label = {
-    "pady": 15,
-    "sticky": "W"
-}
-
 bnt_valided = {
     "bg": "#1E5128",
     "fg": "#191A19",
@@ -41,7 +36,6 @@ style_label1 = {
     "font": ("Roboto", 18, "bold"),
     "bg": "#4E9F3D",
     "fg": "#191A19",
-
 }
 
 style_under_label = {
@@ -49,3 +43,7 @@ style_under_label = {
     "bg": "#4E9F3D",
     "fg": "#1E5128"
 }
+
+bg = "#4E9F3D"
+sticky = "w"
+pady = 5
