@@ -12,7 +12,6 @@ folder_data = os.path.join(folder_current, "data")
     
 recovery_appointment = get_data(folder_data, "list_appointment")
 
-
 def window1():
     
     def afficher():
@@ -102,8 +101,7 @@ def window1():
     container_forms.pack()
     
     root.mainloop()
-    
-def window3():
+
     root = tkinter.Toplevel()
     root.geometry("720x480")
     root.resizable(width=False, height=False)
