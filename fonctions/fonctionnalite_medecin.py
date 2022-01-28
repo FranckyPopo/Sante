@@ -66,7 +66,7 @@ def canet():
     choose_doctor = ["Popo", "Afri", "Kreto",]
     enter_last_name_doctor = ttk.Combobox(container1, values=choose_doctor)
     enter_last_name_doctor.grid(row=2, column=0, sticky=sticky)
-    container1.pack(side="left")
+    container1.grid(row=0, pady=10, sticky=sticky)
     
     # champ 2
     container2 = tkinter.Frame(frame_forms, bg=bg, bd=2, relief="solid")
@@ -76,7 +76,7 @@ def canet():
     
     enter_last_name_doctor = tkcalendar.DateEntry(container2)
     enter_last_name_doctor.grid(row=4, column=0, sticky=sticky)
-    container2.pack(side="left")
+    container2.grid(row=1, pady=10)
     
     # champs 3
     container3 = tkinter.Frame(frame_forms, bg=bg)
@@ -85,7 +85,7 @@ def canet():
     
     enter_reason = tkinter.Text(container3, width=10, height=10)
     enter_reason.grid(row=6, column=0, sticky=sticky)
-    container3.pack(side="left")
+    container3.grid(row=2)
     
     frame_forms.pack()
     
