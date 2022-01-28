@@ -52,19 +52,21 @@ def canet():
     def verification():
         choose_doctor = enter_last_name_doctor.get()
         date_appoitment = enter_date_appoitment.get()
-        reason = enter_reason
+        reason = enter_reason.get("1.0", "end")
         
-        if choose_doctor and date_appoitment:
+        if choose_doctor and date_appoitment and reason != "\n":
             recovery_canet = get_data(folder_data, "list_canet")
             instance_canet = {
                 "doctor": choose_doctor,
                 "date_appoitment": date_appoitment,
+                "reason": reason
             }
             recovery_canet.append(instance_canet)
             recording_data(recovery_canet, folder_current, "data", "list_canet")
+            
+            if label_error["fg"] == "red": label_error["fg"] = bg
         else:
-            print("afficher une erreur")
-    
+            label_error["fg"] = "red"
         
     root = tkinter.Toplevel()
     root.title("Canet de santé")
@@ -93,7 +95,6 @@ def canet():
     label_date = tkinter.Label(container2, text="Date:", **style_canet)
     label_date.grid(row=3, column=0, sticky=sticky)
     
-    
     enter_date_appoitment = tkcalendar.DateEntry(container2)
     enter_date_appoitment.grid(row=4, column=0, sticky=sticky)
     container2.grid(row=1, pady=10, sticky=sticky)
@@ -101,15 +102,18 @@ def canet():
     # champs 3
     container3 = tkinter.Frame(frame_forms, bg=bg)
     label_reason = tkinter.Label(container3, text="Motif:", **style_canet)
-    label_reason.grid(row=5, column=0, sticky=sticky)
+    label_reason.grid(row=0, column=0, sticky=sticky)
     
     enter_reason = tkinter.Text(container3, width=38, height=5)
-    enter_reason.grid(row=6, column=0, sticky=sticky)
+    enter_reason.grid(row=1, column=0, sticky=sticky)
+    
+    label_error = tkinter.Label(container3, text="Veuillez remplir tout les champs", bg=bg, fg=bg, font=("Arial", 10, "bold"))
+    label_error.grid(row=2, sticky=sticky, pady=5)
     container3.grid(row=2, sticky=sticky)
     
     # Bouton valider
     bnt_validate = tkinter.Button(frame_forms, command=verification, text="Valider", **bnt_valided)
-    bnt_validate.grid(row=3, sticky=sticky, pady=20)
+    bnt_validate.grid(row=3, sticky=sticky, pady=5)
 
     frame_forms.pack()
     
