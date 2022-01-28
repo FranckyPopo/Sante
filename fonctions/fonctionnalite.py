@@ -4,8 +4,7 @@ from tkinter import ttk, messagebox
 from PIL import ImageTk, Image
 from tkcalendar import DateEntry
 from .data import recording_data, get_data
-from fonctions import style_window1, style_window3
-
+from fonctions import style_window1
 
 folder_current = os.getcwd()
 folder_data = os.path.join(folder_current, "data")
@@ -111,7 +110,7 @@ def window1():
     
     frame_title = tkinter.Frame(root)
     
-    label_title = tkinter.Label(frame_title, text="OU NOUS RETOUVER", **style_window3.style_title).grid(row=0)
+    label_title = tkinter.Label(frame_title, text="OU NOUS RETOUVER", **style_window1.style_title).grid(row=0)
     
     frame_title.pack(pady=25)
     
@@ -120,13 +119,13 @@ def window1():
     # block 1
     container1 = tkinter.Frame(frame_infos, bg="#4E9F3D")
     
-    label1 = tkinter.Label(container1, text="Clinique Popo (Siége)", **style_window3.style_label1)
+    label1 = tkinter.Label(container1, text="Clinique Popo (Siége)", **style_window1.style_label1)
     label1.grid(row=0, column=0, sticky="WE")
     
-    under_label1 = tkinter.Label(container1, text="25 32 00 05 04", **style_window3.style_under_label) 
+    under_label1 = tkinter.Label(container1, text="25 32 00 05 04", **style_window1.style_under_label) 
     under_label1.grid(row=1, column=0, sticky=sticky)
     
-    under_label2 = tkinter.Label(container1, text="Ouvert actuellement", **style_window3.style_under_label) 
+    under_label2 = tkinter.Label(container1, text="Ouvert actuellement", **style_window1.style_under_label) 
     under_label2.grid(row=2, column=0, sticky=sticky)
     
     container1.grid(row=0, column=0, pady=10)
@@ -134,13 +133,13 @@ def window1():
     # block 2
     container2 = tkinter.Frame(frame_infos, bg="#4E9F3D")
     
-    label2 = tkinter.Label(container2, text="Clinique Popo - Koumassi", **style_window3.style_label1)
+    label2 = tkinter.Label(container2, text="Clinique Popo - Koumassi", **style_window1.style_label1)
     label2.grid(row=0, column=0, sticky="WE")
     
-    under_label_1 = tkinter.Label(container2, text="25 05 04 00 32", **style_window3.style_under_label) 
+    under_label_1 = tkinter.Label(container2, text="25 05 04 00 32", **style_window1.style_under_label) 
     under_label_1.grid(row=1, column=0, sticky=sticky)
     
-    under_label2_2 = tkinter.Label(container2, text="Ouvert  24h / 24h", **style_window3.style_under_label) 
+    under_label2_2 = tkinter.Label(container2, text="Ouvert  24h / 24h", **style_window1.style_under_label) 
     under_label2_2.grid(row=2, column=0, sticky=sticky)
     
     container2.grid(row=1, column=0, pady=10)
@@ -148,13 +147,13 @@ def window1():
     # block 3
     container3 = tkinter.Frame(frame_infos, bg="#4E9F3D")
     
-    label3 = tkinter.Label(container3, text="Clinique Popo - Riviera", **style_window3.style_label1)
+    label3 = tkinter.Label(container3, text="Clinique Popo - Riviera", **style_window1.style_label1)
     label3.grid(row=0, column=0, sticky="WE")
     
-    under_label_3_3 = tkinter.Label(container3, text="25 05 04 00 32", **style_window3.style_under_label) 
+    under_label_3_3 = tkinter.Label(container3, text="25 05 04 00 32", **style_window1.style_under_label) 
     under_label_3_3.grid(row=1, column=0, sticky=sticky)
     
-    under_label2_3 = tkinter.Label(container3, text="Ouvert  24h / 24h", **style_window3.style_under_label) 
+    under_label2_3 = tkinter.Label(container3, text="Ouvert  24h / 24h", **style_window1.style_under_label) 
     under_label2_3.grid(row=2, column=0, sticky=sticky)
     
     container3.grid(row=2, column=0)
