@@ -1,11 +1,12 @@
 import tkinter
 from tkinter import ttk
 import tkcalendar
-from fonctions.fonctionnalite import folder_data
+from fonctions.fonctionnalite import folder_data, folder_current
 from fonctions.data import get_data, recording_data
 from fonctions.style_window1 import grand_titre, bnt_valided
 from fonctions.style_fonctionnali_medecin import style_title, style_consultation_display, pady, sticky, style_canet, bg
 
+from pprint import pprint
 
 def consultation():
     recovery_appointment = get_data(folder_data, "list_appointment")
@@ -47,6 +48,24 @@ def consultation():
     root.mainloop()
     
 def canet():
+
+    def verification():
+        choose_doctor = enter_last_name_doctor.get()
+        date_appoitment = enter_date_appoitment.get()
+        reason = enter_reason
+        
+        if choose_doctor and date_appoitment:
+            recovery_canet = get_data(folder_data, "list_canet")
+            instance_canet = {
+                "doctor": choose_doctor,
+                "date_appoitment": date_appoitment,
+            }
+            recovery_canet.append(instance_canet)
+            recording_data(recovery_canet, folder_current, "data", "list_canet")
+        else:
+            print("afficher une erreur")
+    
+        
     root = tkinter.Toplevel()
     root.title("Canet de santé")
     root.resizable(width=False, height=False)
@@ -63,8 +82,9 @@ def canet():
     label_doctor = tkinter.Label(container1, text="Medecin en charge de la consultation:", **style_canet)
     label_doctor.grid(row=0, sticky=sticky)
     
-    choose_doctor = ["Popo", "Afri", "Kreto",]
-    enter_last_name_doctor = ttk.Combobox(container1, values=choose_doctor)
+    list_doctor = ["Popo", "Afri", "Kreto",]
+    enter_last_name_doctor = ttk.Combobox(container1, values=list_doctor)
+    enter_last_name_doctor.current(1)
     enter_last_name_doctor.grid(row=2, column=0, sticky=sticky)
     container1.grid(row=0, pady=10, sticky=sticky)
     
@@ -74,8 +94,8 @@ def canet():
     label_date.grid(row=3, column=0, sticky=sticky)
     
     
-    enter_last_name_doctor = tkcalendar.DateEntry(container2)
-    enter_last_name_doctor.grid(row=4, column=0, sticky=sticky)
+    enter_date_appoitment = tkcalendar.DateEntry(container2)
+    enter_date_appoitment.grid(row=4, column=0, sticky=sticky)
     container2.grid(row=1, pady=10, sticky=sticky)
     
     # champs 3
@@ -88,7 +108,7 @@ def canet():
     container3.grid(row=2, sticky=sticky)
     
     # Bouton valider
-    bnt_validate = tkinter.Button(frame_forms, text="Valider", **bnt_valided)
+    bnt_validate = tkinter.Button(frame_forms, command=verification, text="Valider", **bnt_valided)
     bnt_validate.grid(row=3, sticky=sticky, pady=20)
 
     frame_forms.pack()

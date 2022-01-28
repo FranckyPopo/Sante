@@ -6,12 +6,10 @@ from tkcalendar import DateEntry
 from .data import recording_data, get_data
 from fonctions import style_window1, style_window3
 
-
 folder_current = os.getcwd()
 folder_data = os.path.join(folder_current, "data")
     
 recovery_appointment = get_data(folder_data, "list_appointment")
-
 
 def window1():
     
