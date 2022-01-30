@@ -105,7 +105,7 @@ def canet():
     label_reason.grid(row=0, column=0, sticky=sticky)
     
     enter_reason = tkinter.Text(container3, width=38, height=5)
-    enter_reason.grid(row=1, column=0)
+    enter_reason.grid(row=1, column=0, sticky=sticky)
     
     # Erreur
     label_error = tkinter.Label(container3, text="Veuillez remplir tout les champs", bg=bg, fg=bg, font=("Arial", 10, "bold"))

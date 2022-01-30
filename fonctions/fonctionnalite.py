@@ -146,22 +146,24 @@ def user_fonctionnality_2():
         last_name_doctor = item["doctor"]
         date_appoitment = item["date_appoitment"]
         
-        frame_block = tkinter.Frame(root, bg=style_window1.bg)
+        frame_master = tkinter.Frame(root, bg="#4E9F3D",  relief="flat")
         
-        label_reason = tkinter.Text(frame_block, **style_canet.style_label_reason, height=2, width=50, relief="flat")
+        frame_block = tkinter.Frame(frame_master, bg=style_window1.bg,)
+        
+        label_reason = tkinter.Text(frame_block, **style_canet.style_label_reason, height=2, width=50,  relief="flat")
         label_reason.insert(1.0, reason)
         label_reason.configure(state='disabled')
-        label_reason.grid(row=0, pady=5)
+        label_reason.grid(row=0, pady=10)
         
-        label_doctor = tkinter.Label(frame_block, text=last_name_doctor, **style_canet.style_infos)
-        label_doctor.grid(row=1)
+        frame_block.grid(row=0, columnspan=2)
         
-        label_date_appoitment = tkinter.Label(frame_block, text=date_appoitment, **style_canet.style_infos)
-        label_date_appoitment.grid(row=2)
+        label_doctor = tkinter.Label(frame_master, text=last_name_doctor, **style_canet.style_infos)
+        label_doctor.grid(row=1, column=0, sticky="w")
         
-        frame_block.pack()
+        label_date_appoitment = tkinter.Label(frame_master, text=date_appoitment, **style_canet.style_infos)
+        label_date_appoitment.grid(row=1, column=1, sticky="e")
+        
+        frame_master.pack()
         i += 1
-    
-    
-    root.mainloop()
 
+    root.mainloop()
