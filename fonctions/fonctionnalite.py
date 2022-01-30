@@ -4,15 +4,16 @@ from tkinter import ttk, messagebox
 from PIL import ImageTk, Image
 from tkcalendar import DateEntry
 from .data import recording_data, get_data
-from fonctions import style_window1
+from fonctions import style_window1, style_canet
+
 
 folder_current = os.getcwd()
 folder_data = os.path.join(folder_current, "data")
     
 
-def window1():
+def user_fonctionnality_1():
     
-    def afficher():
+    def appoitment():
         recovery_appointment = get_data(folder_data, "list_appointment")
         last_name = enter_last_name.get()
         firs_name = enter_firsname.get()
@@ -120,8 +121,45 @@ def window1():
     container6.grid(row=5, sticky=style_window1.sticky, pady=style_window1.pady)
     
     # Bouton valider
-    bnt_validate = tkinter.Button(container_forms, command=afficher, text="Valider",  **style_window1.bnt_valided).grid(row=14, column=0, sticky="W", pady=20)
+    bnt_validate = tkinter.Button(container_forms, command=appoitment, text="Valider",  **style_window1.bnt_valided).grid(row=14, column=0, sticky="W", pady=20)
     
     container_forms.pack()
     
     root.mainloop()
+    
+def user_fonctionnality_2():
+    recovery_canet = get_data(folder_data, "list_canet")
+    
+    root = tkinter.Toplevel()
+    root.title("Canet de santé")
+    root.geometry("720x600")
+    root.resizable(width=False, height=False)
+    root.title("Prendre rendez-vous")
+    root["bg"] = style_window1.bg
+    
+    title = tkinter.Label(root, text="CANET DE SANTE", **style_window1.grand_titre)
+    title.pack(pady=30)
+    
+    i = 0
+    for item in recovery_canet:
+        reason = item["reason"]
+        last_name_doctor = item["doctor"]
+        date_appoitment = item["date_appoitment"]
+        
+        frame_block = tkinter.Frame(root, bg=style_window1.bg)
+        
+        label_reason = tkinter.Label(frame_block, text=reason, **style_canet.style_label_reason)
+        label_reason.grid(row=0)
+        
+        label_doctor = tkinter.Label(frame_block, text=last_name_doctor, **style_canet.style_infos)
+        label_doctor.grid(row=1)
+        
+        label_date_appoitment = tkinter.Label(frame_block, text=date_appoitment, **style_canet.style_infos)
+        label_date_appoitment.grid(row=2)
+        
+        frame_block.pack(padx=100)
+        i += 1
+    
+    
+    root.mainloop()
+

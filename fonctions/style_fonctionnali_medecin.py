@@ -1,4 +1,5 @@
 style_title = {
+
     "font": ("Arial", 18, "bold"),
     "fg": "#191A19",
     "bg": "#4E9F3D"
