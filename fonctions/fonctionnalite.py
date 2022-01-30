@@ -146,16 +146,20 @@ def user_fonctionnality_2():
         last_name_doctor = item["doctor"]
         date_appoitment = item["date_appoitment"]
         
-        frame_master = tkinter.Frame(root, bg="#4E9F3D",  relief="flat")
+        frame_master = tkinter.Frame(root, bg="#4E9F3D", relief="flat")
         
-        frame_block = tkinter.Frame(frame_master, bg=style_window1.bg,)
+        frame_block = tkinter.Frame(frame_master, bg=style_window1.bg)
         
-        label_reason = tkinter.Text(frame_block, **style_canet.style_label_reason, height=2, width=50,  relief="flat")
+        scroolbar = tkinter.Scrollbar(frame_block)
+        scroolbar.grid(row=0, column=1, rowspan=2)
+        
+        label_reason = tkinter.Text(frame_block, **style_canet.style_label_reason, height=2, width=50, relief="flat", yscrollcommand=scroolbar)
         label_reason.insert(1.0, reason)
         label_reason.configure(state='disabled')
-        label_reason.grid(row=0, pady=10)
+        label_reason.grid(row=0, column=0, pady=10)
         
         frame_block.grid(row=0, columnspan=2)
+        scroolbar.config(command=label_reason.yview)
         
         label_doctor = tkinter.Label(frame_master, text=last_name_doctor, **style_canet.style_infos)
         label_doctor.grid(row=1, column=0, sticky="w")
