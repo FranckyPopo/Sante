@@ -1,6 +1,6 @@
 import os
 import tkinter
-from fonctions import style_acceuil, fonctionnalite
+from fonctions import style_acceuil, fonctionnalite, fonctionnalite_medecin
 
 
 window = tkinter.Tk()
@@ -14,7 +14,7 @@ frame = tkinter.Frame(window, bg="#4E9F3D")
 bnt1 = tkinter.Button(frame, text="Prendre rendez-vous", **style_acceuil.style_bouton_accueil, command=fonctionnalite.window1)
 bnt1.grid(row=0, column=0, padx=20)
 
-bnt2 = tkinter.Button(frame, text="Carnet de santé", **style_acceuil.style_bouton_accueil)
+bnt2 = tkinter.Button(frame, text="Carnet de santé", **style_acceuil.style_bouton_accueil, command=fonctionnalite_medecin.consultation)
 bnt2.grid(row=0, column=1, padx=20)
 
 frame.pack(expand="yes")
