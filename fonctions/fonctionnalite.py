@@ -133,7 +133,7 @@ def user_fonctionnality_2():
     root = tkinter.Toplevel()
     root.title("Canet de santé")
     root.geometry("720x600")
-    #root.resizable(width=False, height=False)
+    root.resizable(False, False)
     root.title("Prendre rendez-vous")
     root["bg"] = style_window1.bg
     
@@ -147,7 +147,7 @@ def user_fonctionnality_2():
         date_appoitment = item["date_appoitment"]
         
         frame_block = tkinter.Frame(root, bg=style_window1.bg)
-        label_reason = tkinter.Text(frame_block, **style_canet.style_label_reason, height=2, width=50, bd=2, relief="flat")
+        label_reason = tkinter.Text(frame_block, **style_canet.style_label_reason, height=2, width=50, relief="flat")
         label_reason.insert(1.0, reason)
         label_reason.configure(state='disabled' )
         label_reason.grid(row=0, column=0)

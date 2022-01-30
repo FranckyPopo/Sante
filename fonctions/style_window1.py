@@ -2,7 +2,6 @@
 grand_titre = {
     "fg": "#D8E9A8", 
     'bg': "#4E9F3D",
-    "justify": "left", 
     "font": ("Roboto", 24, "bold", "underline")
 }
 

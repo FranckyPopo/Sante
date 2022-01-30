@@ -1,4 +1,5 @@
+.gitignore
+test.py
 data/
 fonctions/__pycache__/
 __pycache__/
-.gitignore
