@@ -18,15 +18,15 @@ def consultation():
     root["bg"] = "#4E9F3D"
 
     frame_title = tkinter.Frame(root)
-    label_title = tkinter.Label(frame_title, text="LISTE DES CONSULTATION DU JOUR", **grand_titre)
+    label_title = tkinter.Label(frame_title, text="LISTE DES CONSULTATIONs DU JOUR", **grand_titre)
     label_title.grid(row=0, column=0)
     frame_title.grid(row=0, column=0, pady=20, padx=60)
     
     frame_reservation = tkinter.Frame(root, bg="#4E9F3D")
-       
+ 
     number_label = tkinter.Label(frame_reservation, text="N°", **style_title)
     number_label.grid(row=0, column=0, sticky=sticky)
-    
+
     name_label = tkinter.Label(frame_reservation, text="Nom", **style_title)
     name_label.grid(row=0, column=1, padx=100, sticky=sticky)
     
@@ -59,7 +59,7 @@ def canet():
             instance_canet = {
                 "doctor": choose_doctor,
                 "date_appoitment": date_appoitment,
-                "reason": reason
+                "reason": str(reason)
             }
             recovery_canet.append(instance_canet)
             recording_data(recovery_canet, folder_current, "data", "list_canet")
@@ -105,8 +105,9 @@ def canet():
     label_reason.grid(row=0, column=0, sticky=sticky)
     
     enter_reason = tkinter.Text(container3, width=38, height=5)
-    enter_reason.grid(row=1, column=0, sticky=sticky)
+    enter_reason.grid(row=1, column=0)
     
+    # Erreur
     label_error = tkinter.Label(container3, text="Veuillez remplir tout les champs", bg=bg, fg=bg, font=("Arial", 10, "bold"))
     label_error.grid(row=2, sticky=sticky, pady=5)
     container3.grid(row=2, sticky=sticky)

@@ -4,16 +4,18 @@ from tkinter import ttk, messagebox
 from PIL import ImageTk, Image
 from tkcalendar import DateEntry
 from .data import recording_data, get_data
-from fonctions import style_window1, style_window3
+from fonctions import style_window1, style_canet
+
 
 folder_current = os.getcwd()
 folder_data = os.path.join(folder_current, "data")
     
 recovery_appointment = get_data(folder_data, "list_appointment")
 
-def window1():
+def user_fonctionnality_1():
     
-    def afficher():
+    def appoitment():
+        recovery_appointment = get_data(folder_data, "list_appointment")
         last_name = enter_last_name.get()
         firs_name = enter_firsname.get()
         email = enter_email.get()
@@ -95,70 +97,45 @@ def window1():
     enter_date.grid(row=12, column=0, **style_window1.style_calendar)
     
     # Bouton valider
-    bnt_validate = tkinter.Button(container_forms, command=afficher, text="Valider",  **style_window1.bnt_valided).grid(row=14, column=0, sticky="W", pady=20)
+    bnt_validate = tkinter.Button(container_forms, command=appoitment, text="Valider",  **style_window1.bnt_valided).grid(row=14, column=0, sticky="W", pady=20)
     
     container_forms.pack()
     
     root.mainloop()
     
-def window3():
+def user_fonctionnality_2():
+    recovery_canet = get_data(folder_data, "list_canet")
+    
     root = tkinter.Toplevel()
-    root.geometry("720x480")
+    root.title("Canet de santé")
+    root.geometry("720x600")
     root.resizable(width=False, height=False)
-    root["bg"] = "#4E9F3D"
+    root.title("Prendre rendez-vous")
+    root["bg"] = style_window1.bg
     
-    sticky = "W"
+    title = tkinter.Label(root, text="CANET DE SANTE", **style_window1.grand_titre)
+    title.pack(pady=30)
     
-    frame_title = tkinter.Frame(root)
+    i = 0
+    for item in recovery_canet:
+        reason = item["reason"]
+        last_name_doctor = item["doctor"]
+        date_appoitment = item["date_appoitment"]
+        
+        frame_block = tkinter.Frame(root, bg=style_window1.bg)
+        
+        label_reason = tkinter.Label(frame_block, text=reason, **style_canet.style_label_reason)
+        label_reason.grid(row=0)
+        
+        label_doctor = tkinter.Label(frame_block, text=last_name_doctor, **style_canet.style_infos)
+        label_doctor.grid(row=1)
+        
+        label_date_appoitment = tkinter.Label(frame_block, text=date_appoitment, **style_canet.style_infos)
+        label_date_appoitment.grid(row=2)
+        
+        frame_block.pack(padx=100)
+        i += 1
     
-    label_title = tkinter.Label(frame_title, text="OU NOUS RETOUVER", **style_window3.style_title).grid(row=0)
-    
-    frame_title.pack(pady=25)
-    
-    frame_infos = tkinter.Frame(root, bg="#4E9F3D")
-    
-    # block 1
-    container1 = tkinter.Frame(frame_infos, bg="#4E9F3D")
-    
-    label1 = tkinter.Label(container1, text="Clinique Popo (Siége)", **style_window3.style_label1)
-    label1.grid(row=0, column=0, sticky="WE")
-    
-    under_label1 = tkinter.Label(container1, text="25 32 00 05 04", **style_window3.style_under_label) 
-    under_label1.grid(row=1, column=0, sticky=sticky)
-    
-    under_label2 = tkinter.Label(container1, text="Ouvert actuellement", **style_window3.style_under_label) 
-    under_label2.grid(row=2, column=0, sticky=sticky)
-    
-    container1.grid(row=0, column=0, pady=10)
-    
-    # block 2
-    container2 = tkinter.Frame(frame_infos, bg="#4E9F3D")
-    
-    label2 = tkinter.Label(container2, text="Clinique Popo - Koumassi", **style_window3.style_label1)
-    label2.grid(row=0, column=0, sticky="WE")
-    
-    under_label_1 = tkinter.Label(container2, text="25 05 04 00 32", **style_window3.style_under_label) 
-    under_label_1.grid(row=1, column=0, sticky=sticky)
-    
-    under_label2_2 = tkinter.Label(container2, text="Ouvert  24h / 24h", **style_window3.style_under_label) 
-    under_label2_2.grid(row=2, column=0, sticky=sticky)
-    
-    container2.grid(row=1, column=0, pady=10)
-    
-    # block 3
-    container3 = tkinter.Frame(frame_infos, bg="#4E9F3D")
-    
-    label3 = tkinter.Label(container3, text="Clinique Popo - Riviera", **style_window3.style_label1)
-    label3.grid(row=0, column=0, sticky="WE")
-    
-    under_label_3_3 = tkinter.Label(container3, text="25 05 04 00 32", **style_window3.style_under_label) 
-    under_label_3_3.grid(row=1, column=0, sticky=sticky)
-    
-    under_label2_3 = tkinter.Label(container3, text="Ouvert  24h / 24h", **style_window3.style_under_label) 
-    under_label2_3.grid(row=2, column=0, sticky=sticky)
-    
-    container3.grid(row=2, column=0)
-    
-    frame_infos.pack()
     
     root.mainloop()
+
