@@ -149,5 +149,32 @@ def user_fonctionnality_2():
     my_croolbar = ttk.Scrollbar(frame_main, orient="vertical", command=my_canvas.yview)
     my_croolbar.pack(side="right", fill="y")
 
-
+    my_canvas.config(yscrollcommand=my_croolbar.set)
+    my_canvas.bind("<Configure>", lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))
+    
+    second_frame = tkinter.Frame(my_canvas, bg="#4E9F3D")
+    
+    my_canvas.create_window((0,0), window=second_frame, anchor="nw")
+    
+    for item in recovery_canet:
+        reason = item["reason"]
+        date = item["date_appoitment"]
+        doctor = item["doctor"]       
+        
+        text_reason = tkinter.Text(second_frame, bg="#4E9F3D", height=5, relief="flat", font=("Arial", 12))
+        text_reason.insert(1.0, reason)
+        text_reason.configure(state='disabled')
+        text_reason.pack()
+        
+        frame_block = tkinter.Frame(second_frame, bg="#4E9F3D")
+        frame_block.pack(fill="x")
+        
+        label_date = tkinter.Label(frame_block, text=date, fg="#D8E9A8", bg="#4E9F3D")
+        label_date.grid(row=1, column=0, pady=5)
+        
+        label_doctor = tkinter.Label(frame_block, text=doctor, fg="#D8E9A8", bg="#4E9F3D")
+        label_doctor.grid(row=1, column=1, padx=300, pady=5)
+        
+    
+    
     root.mainloop()
