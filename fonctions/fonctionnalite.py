@@ -140,34 +140,14 @@ def user_fonctionnality_2():
     title = tkinter.Label(root, text="CANET DE SANTE", **style_window1.grand_titre)
     title.pack(pady=30)
     
-    i = 0
-    for item in recovery_canet:
-        reason = item["reason"]
-        last_name_doctor = item["doctor"]
-        date_appoitment = item["date_appoitment"]
-        
-        frame_master = tkinter.Frame(root, bg="#4E9F3D", relief="flat")
-        
-        frame_block = tkinter.Frame(frame_master, bg=style_window1.bg)
-        
-        scroolbar = tkinter.Scrollbar(frame_block)
-        scroolbar.grid(row=0, column=1, rowspan=2)
-        
-        label_reason = tkinter.Text(frame_block, **style_canet.style_label_reason, height=2, width=50, relief="flat", yscrollcommand=scroolbar)
-        label_reason.insert(1.0, reason)
-        label_reason.configure(state='disabled')
-        label_reason.grid(row=0, column=0, pady=10)
-        
-        frame_block.grid(row=0, columnspan=2)
-        scroolbar.config(command=label_reason.yview)
-        
-        label_doctor = tkinter.Label(frame_master, text=last_name_doctor, **style_canet.style_infos)
-        label_doctor.grid(row=1, column=0, sticky="w")
-        
-        label_date_appoitment = tkinter.Label(frame_master, text=date_appoitment, **style_canet.style_infos)
-        label_date_appoitment.grid(row=1, column=1, sticky="e")
-        
-        frame_master.pack()
-        i += 1
+    frame_main = tkinter.Frame(root, bg="#4E9F3D", relief="flat")
+    frame_main.pack()
+    
+    my_canvas = tkinter.Canvas(frame_main, height=450, width=400, bg="#4E9F3D")
+    my_canvas.pack(side="left", fill="both", expand=1)
+    
+    my_croolbar = ttk.Scrollbar(frame_main, orient="vertical", command=my_canvas.yview)
+    my_croolbar.pack(side="right", fill="y")
+
 
     root.mainloop()
