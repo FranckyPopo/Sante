@@ -60,8 +60,6 @@ def consultation():
         tkinter.Label(second_frame, text=i, **style_consultation_display).grid(row=i, column=0, pady=pady, padx=45, sticky=sticky)
         tkinter.Label(second_frame, text=name, **style_consultation_display).grid(row=i, column=1, pady=pady, padx=30, sticky=sticky)
         tkinter.Label(second_frame, text=category, **style_consultation_display).grid(row=i, column=2, pady=pady, sticky=sticky)
-        
-    
 
     root.mainloop()
     
