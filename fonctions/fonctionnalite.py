@@ -1,15 +1,13 @@
 import os
 import tkinter
 from tkinter import ttk, messagebox
-from PIL import ImageTk, Image
+from turtle import width
 from tkcalendar import DateEntry
 from .data import recording_data, get_data
 from fonctions import style_window1, style_canet
 
-
 folder_current = os.getcwd()
 folder_data = os.path.join(folder_current, "data")
-    
 
 def user_fonctionnality_1():
     
@@ -133,7 +131,7 @@ def user_fonctionnality_2():
     root = tkinter.Toplevel()
     root.title("Canet de santé")
     root.geometry("720x600")
-    #root.resizable(width=False, height=False)
+    root.resizable(width=False, height=False)
     root.title("Prendre rendez-vous")
     root["bg"] = style_window1.bg
     
@@ -153,6 +151,7 @@ def user_fonctionnality_2():
     my_canvas.bind("<Configure>", lambda e: my_canvas.configure(scrollregion=my_canvas.bbox("all")))
     
     second_frame = tkinter.Frame(my_canvas, bg="#4E9F3D")
+    second_frame.pack()
     
     my_canvas.create_window((0,0), window=second_frame, anchor="nw")
     
@@ -161,19 +160,19 @@ def user_fonctionnality_2():
         date = item["date_appoitment"]
         doctor = item["doctor"]       
         
-        text_reason = tkinter.Text(second_frame, bg="#4E9F3D", height=5, relief="flat", font=("Arial", 12))
+        text_reason = tkinter.Text(second_frame, bg="#4E9F3D", height=5, width=50, relief="flat", font=("Arial", 12))
         text_reason.insert(1.0, reason)
         text_reason.configure(state='disabled')
-        text_reason.pack()
+        text_reason.pack(pady=5, padx=10)
         
         frame_block = tkinter.Frame(second_frame, bg="#4E9F3D")
         frame_block.pack(fill="x")
         
-        label_date = tkinter.Label(frame_block, text=date, fg="#D8E9A8", bg="#4E9F3D")
-        label_date.grid(row=1, column=0, pady=5)
+        # label_date = tkinter.Label(frame_block, text=date, fg="#D8E9A8", bg="#4E9F3D")
+        # label_date.grid(row=1, column=0, pady=5, padx=50)
         
-        label_doctor = tkinter.Label(frame_block, text=doctor, fg="#D8E9A8", bg="#4E9F3D")
-        label_doctor.grid(row=1, column=1, padx=300, pady=5)
+        # label_doctor = tkinter.Label(frame_block, text=doctor, fg="#D8E9A8", bg="#4E9F3D")
+        # label_doctor.grid(row=1, column=1, padx=50, pady=5)
         
     
     
