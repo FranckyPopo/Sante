@@ -160,7 +160,7 @@ def user_fonctionnality_2():
         date = item["date_appoitment"]
         doctor = item["doctor"]       
         
-        text_reason = tkinter.Text(second_frame, bg="#4E9F3D", height=5, width=50, relief="flat", font=("Arial", 12))
+        text_reason = tkinter.Text(second_frame, bg="#4E9F3D", bd=2, width=50, font=("Arial", 12), highlightbackground="black")
         text_reason.insert(1.0, reason)
         text_reason.configure(state='disabled')
         text_reason.pack(pady=5, padx=10)
@@ -168,12 +168,10 @@ def user_fonctionnality_2():
         frame_block = tkinter.Frame(second_frame, bg="#4E9F3D")
         frame_block.pack(fill="x")
         
-        # label_date = tkinter.Label(frame_block, text=date, fg="#D8E9A8", bg="#4E9F3D")
-        # label_date.grid(row=1, column=0, pady=5, padx=50)
+        label_date = tkinter.Label(frame_block, text=date, fg="#D8E9A8", bg="#4E9F3D")
+        label_date.grid(row=1, column=0, pady=5, padx=50)
         
         # label_doctor = tkinter.Label(frame_block, text=doctor, fg="#D8E9A8", bg="#4E9F3D")
         # label_doctor.grid(row=1, column=1, padx=50, pady=5)
-        
-    
     
     root.mainloop()
